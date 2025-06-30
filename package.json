@@ -1,0 +1,9 @@
+{
+  "name": "collab-tool",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "start-server": "cd server && node index.js"
+  }
+}
