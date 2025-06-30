@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Allow all origins or set your frontend domain when deployed
+    origin: "https://versaroom.netlify.app",
     methods: ["GET", "POST"],
   },
 });
