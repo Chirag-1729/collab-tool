@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*", // Allow all origins or set your frontend domain when deployed
     methods: ["GET", "POST"],
   },
 });
@@ -30,7 +30,6 @@ io.on("connection", (socket) => {
     socket.to(roomId).emit("receive-message", message);
   });
 
-  // ✅ Typing indicator support
   socket.on("typing", ({ roomId, username }) => {
     socket.to(roomId).emit("user-typing", username);
   });
@@ -40,6 +39,7 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
